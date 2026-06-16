@@ -1,0 +1,39 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: hotel-ops-backend
+  datasource:
+    url: ${HOTEL_DB_URL:jdbc:mysql://localhost:3306/hotel_ops?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false}
+    username: ${HOTEL_DB_USER:root}
+    password: ${HOTEL_DB_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      initialization-fail-timeout: -1
+      connection-timeout: 1200
+      validation-timeout: 1000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+  health:
+    db:
+      enabled: false
+
+# ML API 服务地址（Python Flask, port 5000）
+ml:
+  api:
+    url: http://localhost:5000
+
+hotel:
+  jdbc:
+    enabled: ${HOTEL_JDBC_ENABLED:false}
+  auth:
+    jwt-secret: ${HOTEL_JWT_SECRET:hotel-ops-demo-secret-change-me-hotel-ops-demo-secret}
+    jwt-expire-seconds: ${HOTEL_JWT_EXPIRE_SECONDS:28800}

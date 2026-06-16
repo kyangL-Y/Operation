@@ -1,0 +1,60 @@
+openapi: 3.0.3
+info:
+  title: Hotel Ops API
+  version: 0.0.1
+servers:
+  - url: http://localhost:8080
+paths:
+  /api/auth/login:
+    post:
+      summary: 登录
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              required: [username, password]
+      responses:
+        "200":
+          description: OK
+  /api/rag/ask:
+    post:
+      summary: 问答
+      parameters:
+        - in: header
+          name: X-Auth-Token
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                question:
+                  type: string
+              required: [question]
+      responses:
+        "200":
+          description: OK
+  /api/ops/dashboard:
+    get:
+      summary: 看板数据
+      parameters:
+        - in: header
+          name: X-Auth-Token
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+

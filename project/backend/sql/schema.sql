@@ -1,0 +1,34 @@
+-- 酒店运营支持系统示例数据库脚本
+-- MySQL 8.x
+
+CREATE DATABASE IF NOT EXISTS hotel_ops DEFAULT CHARACTER SET utf8mb4;
+USE hotel_ops;
+
+CREATE TABLE IF NOT EXISTS sys_user (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  username VARCHAR(64) NOT NULL UNIQUE,
+  display_name VARCHAR(64) NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  role_code VARCHAR(32) NOT NULL,
+  status TINYINT NOT NULL DEFAULT 1,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS kb_document (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(255) NOT NULL,
+  content TEXT NOT NULL,
+  source_type VARCHAR(32) DEFAULT 'manual',
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS ops_daily_metric (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  biz_date DATE NOT NULL,
+  occupancy_rate DECIMAL(5, 4) NOT NULL,
+  revenue DECIMAL(12, 2) NOT NULL,
+  cancellation_rate DECIMAL(5, 4) NOT NULL DEFAULT 0.1600,
+  review_score DECIMAL(3, 2) NOT NULL,
+  negative_rate DECIMAL(5, 4) NOT NULL,
+  UNIQUE KEY uk_biz_date (biz_date)
+);

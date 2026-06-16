@@ -1,0 +1,47 @@
+# Local agent/workspace files
+.helloagents/
+.tmp/
+.claude/
+.grok-search/
+_mcp/
+
+# Generated dependencies and build outputs
+project/.venv_ml/
+project/ml/.venv/
+project/frontend/node_modules/
+project/frontend/dist/
+project/backend/target/
+
+# Runtime logs and caches
+project/logs/
+project/ml/__pycache__/
+*.log
+*.err.log
+*.out.log
+*.pyc
+
+# Local secrets
+project/deepseek.env
+project/*.env
+!project/*.env.example
+*.pem
+*.key
+
+# Generated ML experiment outputs
+project/ml/output/
+project/ml/modelscope_deploy/
+project/ml/modelscope_deploy.tar.gz
+project/ml/models/*.joblib
+project/ml/data/external/*.csv
+project/ml/data/external/*.zip
+!project/ml/data/external/README.md
+
+# Generated demo helper scripts
+project/.ml_start.ps1
+project/.backend_start.ps1
+project/.backend_restart.ps1
+
+# Large research/model archives kept locally but not needed for source review
+model_assets/
+materials/template_unzip/
+materials/template_source.zip

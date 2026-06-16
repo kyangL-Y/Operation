@@ -1,0 +1,5 @@
+Total training iterations: 50
+Each iteration: ~2-3 minutes
+Estimated total time: 100-150 minutes
+Current elapsed: ~110 minutes
+Estimated remaining: 0-40 minutes

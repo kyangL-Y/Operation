@@ -1,0 +1,40 @@
+# Local secrets
+deepseek.env
+*.env
+!*.env.example
+*.pem
+*.key
+
+# Java / Maven
+backend/target/
+*.class
+
+# Vue / Vite
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Python
+.venv_ml/
+ml/.venv/
+ml/__pycache__/
+**/__pycache__/
+*.pyc
+
+# Runtime logs
+logs/
+*.log
+*.err.log
+*.out.log
+.ml_start.ps1
+.backend_start.ps1
+.backend_restart.ps1
+
+# Generated ML experiment outputs
+ml/output/
+ml/modelscope_deploy/
+ml/modelscope_deploy.tar.gz
+ml/models/*.joblib
+ml/data/external/*.csv
+ml/data/external/*.zip
+!ml/data/external/README.md
